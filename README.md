@@ -21,7 +21,7 @@ ParaHarciyor, harcamalarınızı detaylı bir şekilde kaydetme imkanı sunar. H
 Uygulama, kullanıcı dostu bir arayüzle gelir ve size harcama alışkanlıklarınızı anlamada yardımcı olur. Kategorize edilmiş harcamaları görüntüleyebilir, grafikler ve raporlar aracılığıyla harcamalarınızın dağılımını ve trendlerini takip edebilirsiniz. Bütçe hedefleri belirleyebilir ve gerçekleşen harcamalarınızı bu hedeflerle karşılaştırabilirsiniz.
 
 
-- **Uygulama birincil fonksiyonu**: Harcamalrın kategorize edilmesi(mutfak. giyim,eğlence vb.)
+- **Uygulama birincil fonksiyonu**: Harcamaların kategorize edilmesi(mutfak. giyim,eğlence vb.).
 
 - **Uygulama ikincil fonksiyonu**: Kullanıcının bütçe planlamasını yapabiliyor olması.
 
