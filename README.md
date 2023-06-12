@@ -42,6 +42,8 @@ Genç Profesyoneller: İş dünyasına yeni adım atmış, kariyerlerinin başı
 Yeni Evli Çiftler: Evlilik sonrasında ortak bir bütçe yönetimi gerektiren çiftler, harcamaları izlemek, birikim yapmak ve mali hedeflerine ulaşmak için böyle bir uygulamadan faydalanabilirler.
 Tasarruf Hedefleri Olanlar: Para biriktirmek, yatırım yapmak veya belirli bir hedef için tasarruf etmek isteyen bireyler, harcamaların
 
+## Product Backlog URL: https://miro.com/app/board/uXjVM_8HxSE=/#tpicker-content
+
 
 
 ---
