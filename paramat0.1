@@ -1,0 +1,159 @@
+import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:flutter/services.dart';
+
+void main() {
+  runApp(const ParamatApp());
+}
+
+class ParamatApp extends StatelessWidget {
+  const ParamatApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Paramat',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const HomePage(),
+    );
+  }
+}
+
+class Harcama {
+  final String tarih;
+  final String aciklama;
+  final String tutar;
+
+  Harcama({required this.tarih, required this.aciklama, required this.tutar});
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  final List<Harcama> harcamalar = [];
+
+  final TextEditingController aciklamaController = TextEditingController();
+  final TextEditingController tutarController = TextEditingController();
+
+  final NumberFormat numberFormat = NumberFormat.decimalPattern();
+
+  @override
+  void initState() {
+    super.initState();
+    tutarController.addListener(onTutarChanged);
+  }
+
+  @override
+  void dispose() {
+    tutarController.removeListener(onTutarChanged);
+    tutarController.dispose();
+    super.dispose();
+  }
+
+  void onTutarChanged() {
+    setState(() {
+      final text = tutarController.text;
+      final parsedValue = int.tryParse(text.replaceAll(',', ''));
+      if (parsedValue != null) {
+        final formattedValue = numberFormat.format(parsedValue);
+        tutarController.value = TextEditingValue(
+          text: formattedValue,
+          selection: TextSelection.collapsed(offset: formattedValue.length),
+        );
+      }
+    });
+  }
+
+  void addHarcama() {
+    final now = DateTime.now();
+    final formattedDate = DateFormat('dd.MM.yyyy HH:mm').format(now);
+    final aciklama = aciklamaController.text;
+    final tutar = '${tutarController.text} TL';
+
+    setState(() {
+      harcamalar.add(Harcama(tarih: formattedDate, aciklama: aciklama, tutar: tutar));
+      aciklamaController.clear();
+      tutarController.clear();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Paramat'),
+      ),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: harcamalar.length,
+              itemBuilder: (BuildContext context, int index) {
+                final harcama = harcamalar[index];
+                return ListTile(
+                  leading: Container(
+                    width: 50.0,
+                    height: 50.0,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: const CircleAvatar(
+                      backgroundImage: AssetImage('assets/ikon.png'),
+                    ),
+                  ),
+                  title: Text(
+                    harcama.aciklama,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(harcama.tutar),
+                  trailing: Text(harcama.tarih),
+                );
+              },
+            ),
+          ),
+          const SizedBox(height: 20.0),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: aciklamaController,
+                    decoration: const InputDecoration(
+                      labelText: 'Açıklama',
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10.0),
+                Expanded(
+                  child: TextField(
+                    controller: tutarController,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    decoration: const InputDecoration(
+                      labelText: 'Tutar',
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10.0),
+          ElevatedButton(
+            onPressed: addHarcama,
+            child: const Text('Ekle'),
+          ),
+          const SizedBox(height: 20.0),
+        ],
+      ),
+    );
+  }
+}
+
