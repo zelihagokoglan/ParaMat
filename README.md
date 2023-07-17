@@ -119,7 +119,7 @@ Juriye Not
 
 - Puan tamamlama mantığı: Toplamda proje boyunca tamamlanması gereken 500 puanlık backlog bulunmaktadır. 3 sprint'e bölündüğünde üçüncü sprint'in en azından 200 ile başlaması gerektiğine karar verildi.
 
-- Daily Scrum: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. 
+- Daily Scrum: Daily Scrum toplantılarının zamansal sebeplerden ötürü Whatsapp üzerinden yapılmasına karar verilmiştir. https://1drv.ms/w/s!Ah6h_OUOHetLgcxlB3QAQxl4Bq3Mww?e=TabD1V
 
 - Sprint board update: Sprint board screenshots:
 
